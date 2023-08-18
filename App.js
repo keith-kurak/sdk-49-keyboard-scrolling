@@ -1,20 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import {SafeAreaView, StyleSheet, TextInput, ScrollView} from 'react-native';
 
-export default function App() {
+const TEXT_INPUT_COUNT = 20;
+
+const TextInputExample = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView>
+    <ScrollView>
+      {Array.from(Array(TEXT_INPUT_COUNT)).map((_,index) => {
+        return (
+          <TextInput
+            style={styles.input}
+            placeholder={`Text Input #${index + 1}`}
+          />
+        )
+      })}
+      </ScrollView>
+    </SafeAreaView>
   );
-}
+};
+
+
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
   },
 });
+
+export default TextInputExample;
